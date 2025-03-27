@@ -22,7 +22,7 @@ app.post("/generate-poster", upload.single("photo"), async (req, res) => {
       .composite([{ input: inputImage, top: 100, left: 100 }]) // Adjust as needed
       .toFile(outputImage);
 
-    res.json({ posterUrl: `http://localhost:5000/${outputImage}` });
+    res.json({ posterUrl: `https://poster-gen.onrender.com/${outputImage}` });
   } catch (error) {
     res.status(500).json({ error: "Error generating poster" });
   }
