@@ -29,4 +29,37 @@ function App() {
   );
 }
 
+
+const [posterURL, setPosterURL] = useState(null);
+
+const handleUpload = async (event) => {
+  const formData = new FormData();
+  formData.append("image", event.target.files[0]);
+
+  const response = await fetch("https://poster-gen.onrender.com/generate-poster", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await response.json();
+  if (data.success) {
+    setPosterURL(data.url); // Display final poster
+  } else {
+    console.error("Upload failed", data.message);
+  }
+};
+
+return (
+  <div>
+    <input type="file" onChange={handleUpload} />
+    {posterURL && <img src={posterURL} alt="Generated Poster" />}
+  </div>
+);
+
+
+
 export default App;
+
+
+
+
