@@ -12,7 +12,7 @@ function App() {
     formData.append("name", name);
     formData.append("photo", photo);
 
-    const response = await axios.post("http://localhost:5000/generate-poster", formData);
+    const response = await axios.post("https://poster-gen.onrender.com/generate-poster", formData);
     setPosterUrl(response.data.posterUrl);
   };
 
