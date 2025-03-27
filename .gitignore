@@ -1,0 +1,17 @@
+# Node.js modules
+node_modules/
+npm-debug.log
+yarn-error.log
+.DS_Store
+
+# Logs
+logs/
+*.log
+debug.log
+error.log
+
+# Environment variables
+.env
+
+# Temp uploads (Multer)
+uploads/
