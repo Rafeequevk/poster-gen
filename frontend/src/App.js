@@ -4,16 +4,31 @@ import axios from "axios";
 function App() {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState(null);
-  const [posterUrl, setPosterUrl] = useState("");
+  const [posterURL, setPosterURL] = useState(null);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+
     const formData = new FormData();
     formData.append("name", name);
     formData.append("photo", photo);
 
-    const response = await axios.post("https://poster-gen.onrender.com/generate-poster", formData);
-    setPosterUrl(response.data.posterUrl);
+    try {
+      const response = await axios.post("https://poster-gen.onrender.com/generate-poster", formData, {
+        headers: { "Content-Type": "multipart/form-data" }
+      });
+
+      if (response.data.success) {
+        setPosterURL(response.data.url); // Set the generated poster URL
+      } else {
+        setError("Poster generation failed. Try again.");
+      }
+    } catch (error) {
+      setError("Error generating poster. Please check backend.");
+      console.error(error);
+    }
   };
 
   return (
@@ -24,42 +39,11 @@ function App() {
         <input type="file" onChange={(e) => setPhoto(e.target.files[0])} />
         <button type="submit">Generate Poster</button>
       </form>
-      {posterUrl && <img src={posterUrl} alt="Poster" />}
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {posterURL && <img src={posterURL} alt="Generated Poster" />}
     </div>
   );
 }
 
-
-const [posterURL, setPosterURL] = useState(null);
-
-const handleUpload = async (event) => {
-  const formData = new FormData();
-  formData.append("image", event.target.files[0]);
-
-  const response = await fetch("https://poster-gen.onrender.com/generate-poster", {
-    method: "POST",
-    body: formData,
-  });
-
-  const data = await response.json();
-  if (data.success) {
-    setPosterURL(data.url); // Display final poster
-  } else {
-    console.error("Upload failed", data.message);
-  }
-};
-
-return (
-  <div>
-    <input type="file" onChange={handleUpload} />
-    {posterURL && <img src={posterURL} alt="Generated Poster" />}
-  </div>
-);
-
-
-
 export default App;
-
-
-
-
