@@ -5,9 +5,17 @@ const cloudinary = require("cloudinary").v2;
 const fs = require("fs");
 const path = require("path");
 require("dotenv").config(); // Load .env file
+const cors = require("cors"); // Import CORS
+
 
 const app = express();
 const upload = multer({ dest: "uploads/" }); // Temporary storage
+
+app.use(cors({
+    origin: "https://mern-poster-frontend.vercel.app",
+    methods: "GET,POST",
+    allowedHeaders: "Content-Type"
+  }));
 
 // Configure Cloudinary (Use Environment Variables)
 cloudinary.config({
