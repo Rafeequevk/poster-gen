@@ -47,7 +47,7 @@ app.post("/generate-poster", upload.single("photo"), async (req, res) => {
     ctx.drawImage(template, 0, 0, template.width, template.height);
 
     // Place uploaded photo (adjust x, y, width, height)
-    ctx.drawImage(uploadedPhoto, 819.5, 1453.2353 , 200, 200);
+    ctx.drawImage(uploadedPhoto, 819.5, 1453.2353 , 350, 400);
 
     // Add user name
     ctx.font = "40px Arial";
