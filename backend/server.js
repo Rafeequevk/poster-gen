@@ -52,7 +52,7 @@ app.post("/generate-poster", upload.single("photo"), async (req, res) => {
     // Add user name
     ctx.font = "40px Arial";
     ctx.fillStyle = "black";
-    ctx.fillText(userName, 150, 450);
+    ctx.fillText(userName, 320, 1718);
 
     // Convert canvas to Buffer (No need to save locally)
     const buffer = canvas.toBuffer("image/png");
