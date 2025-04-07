@@ -13,7 +13,7 @@ const upload = multer({ dest: "uploads/" }); // Temporary storage
 
 
 app.use(cors({
-  origin: "https://mern-poster-frontend.vercel.app", // ✅ your deployed frontend
+  origin: "https://frontend-chi-liart.vercel.app/", // ✅ your deployed frontend
   methods: ["GET", "POST"], // ✅ should be an array
   allowedHeaders: ["Content-Type"] // ✅ should also be an array
 }));
