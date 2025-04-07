@@ -1,7 +1,8 @@
 # Node.js modules
-node_modules/
-npm-debug.log
-yarn-error.log
+frontend/node_modules/
+backend/node_modules/
+frontend/npm-debug.log
+backend/yarn-error.log
 .DS_Store
 
 # Logs
@@ -11,7 +12,8 @@ debug.log
 error.log
 
 # Environment variables
-.env
+frontend/.env
+backend//.env
 
 # Temp uploads (Multer)
 uploads/

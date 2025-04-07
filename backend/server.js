@@ -11,11 +11,15 @@ const cors = require("cors"); // Import CORS
 const app = express();
 const upload = multer({ dest: "uploads/" }); // Temporary storage
 
+
 app.use(cors({
-    origin: "https://mern-poster-frontend.vercel.app",
-    methods: "GET,POST",
-    allowedHeaders: "Content-Type"
-  }));
+  origin: "https://mern-poster-frontend.vercel.app", // ✅ your deployed frontend
+  methods: ["GET", "POST"], // ✅ should be an array
+  allowedHeaders: ["Content-Type"] // ✅ should also be an array
+}));
+
+
+
 
 // Configure Cloudinary (Use Environment Variables)
 cloudinary.config({
