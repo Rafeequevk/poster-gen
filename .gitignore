@@ -1,11 +1,10 @@
 # Node.js modules
 frontend/node_modules/
 backend/node_modules/
-frontend/npm-debug.log
-backend/yarn-error.log
-.DS_Store
 
 # Logs
+frontend/npm-debug.log*
+backend/yarn-error.log*
 logs/
 *.log
 debug.log
@@ -13,7 +12,20 @@ error.log
 
 # Environment variables
 frontend/.env
-backend//.env
+backend/.env
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
 
 # Temp uploads (Multer)
 uploads/
+
+# Build output (React build)
+frontend/build/
+
+# Vercel/Render local config
+.vercel/
