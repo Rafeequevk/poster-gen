@@ -35,7 +35,7 @@ app.post("/generate-poster", upload.single("photo"), async (req, res) => {
     }
 
     const userName = req.body.name;
-    const templatePath = path.join(__dirname, "templates", "poster-template.png");
+    const templatePath = path.join(__dirname, "templates", "poster-template.jpg");
 
     // Load template and user photo
     const [template, uploadedPhoto] = await Promise.all([
