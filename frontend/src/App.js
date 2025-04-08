@@ -129,7 +129,17 @@ function App() {
           <img
             src={posterURL}
             alt="Generated Poster"
-            style={{ width: "100%", borderRadius: "8px" }}
+
+            style={{
+              width: "100%",
+              borderRadius: "5%", // makes it circular
+              border: "5px solid #fff",
+              boxShadow: "0 0 20px rgba(0, 150, 255, 0.7)", // glowing blue
+              padding: "10px",
+              background: "linear-gradient(45deg, #00f0ff, #ff00ff)" // colorful frame
+            }}
+
+            
           />
           <button onClick={downloadPoster} style={{ marginTop: "1rem" }}>
             Download Poster

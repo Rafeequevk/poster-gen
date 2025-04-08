@@ -51,12 +51,13 @@ app.post("/generate-poster", upload.single("photo"), async (req, res) => {
     ctx.drawImage(template, 0, 0, template.width, template.height);
 
     // Place uploaded photo (adjust x, y, width, height)
-    ctx.drawImage(uploadedPhoto, 405 , 461.5 , 270, 310);
+    ctx.drawImage(uploadedPhoto, 350 , 514.5173 , 380, 380);
 
     // Add user name
-    ctx.font = "40px Arial";
+    ctx.font = "bold 40px Poppins";
     ctx.fillStyle = "black";
-    ctx.fillText(userName, 476.0569, 793.7374 );
+    ctx.textAlign = "center";
+    ctx.fillText(userName, 540 , 478.2647  );
 
     // Convert canvas to Buffer (No need to save locally)
     const buffer = canvas.toBuffer("image/png");
