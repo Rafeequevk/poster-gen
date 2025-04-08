@@ -51,7 +51,42 @@ app.post("/generate-poster", upload.single("photo"), async (req, res) => {
     ctx.drawImage(template, 0, 0, template.width, template.height);
 
     // Place uploaded photo (adjust x, y, width, height)
-    ctx.drawImage(uploadedPhoto, 350 , 514.5173 , 380, 380);
+    // ctx.drawImage(uploadedPhoto, 350 , 514.5173 , 380, 380);
+
+// Function to draw rounded image with glow
+function drawRoundedImage(ctx, image, x, y, width, height, radius = 10) {
+  ctx.save();
+
+  // Glow effect
+  ctx.shadowColor = "rgba(0, 150, 255, 0.6)";
+  ctx.shadowBlur = 20;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+
+  // Rounded corners
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
+  ctx.closePath();
+  ctx.clip();
+
+  ctx.drawImage(image, x, y, width, height);
+  ctx.restore();
+}
+
+// Replace this:
+drawRoundedImage(ctx, uploadedPhoto, 350, 514.5173, 380, 380);
+
+
+
+
 
     // Add user name
     ctx.font = "bold 40px Poppins";
