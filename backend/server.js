@@ -54,14 +54,14 @@ app.post("/generate-poster", upload.single("photo"), async (req, res) => {
     // ctx.drawImage(uploadedPhoto, 350 , 514.5173 , 380, 380);
 
 // Function to draw rounded image with glow
-function drawRoundedImage(ctx, image, x, y, width, height, radius = 10) {
+function drawRoundedImage(ctx, image, x, y, width, height, radius = 30) {
   ctx.save();
 
   // Glow effect
-  ctx.shadowColor = "rgba(0, 150, 255, 0.6)";
+  ctx.shadowColor = "rgba(4, 7, 8, 0.6)";
   ctx.shadowBlur = 20;
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
+  ctx.shadowOffsetX = 1;
+  ctx.shadowOffsetY = 1;
 
   // Rounded corners
   ctx.beginPath();
